@@ -1,4 +1,4 @@
-# Part 1: DevOps with Docker ([TKT21036](https://studies.helsinki.fi/kurssit/toteutus/otm-4bd45ab8-8b23-4973-a918-a6b6f7bbb347/TKT21036))
+# Part 1: DevOps with Docker ([TKT21036](https://studies.helsinki.fi/courses/course-implementation/otm-4bd45ab8-8b23-4973-a918-a6b6f7bbb347)) 1 ECTS
 
 ## Exercises
 
@@ -81,9 +81,12 @@ Secret message is: 'You can find the source code here: https://github.com/docker
 ```
 
 ### Exercise 1.4
-- Command used to start the process and install the dependencies: `docker run -it -d --name curler ubuntu sh -c 'apt-get update; apt-get -y install curl; while true; do echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website; done'`
-- Once installed, attach to the container: `docker attach curler`
-- Input `helsinki.fi`
+- Command used to start the process and install the dependencies:
+    - `docker run -it -d --name curler ubuntu sh -c 'apt-get update; apt-get -y install curl; while true; do echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website; done'`
+- Once installed, attach to the container: 
+    - `docker attach curler`
+- Input:
+    - `helsinki.fi`
 
 ```console
 xxxx@xxxxxx-PC:~$ docker run -it -d --name curler ubuntu sh -c 'apt-get update; apt-get -y install curl; while true; do echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website; done'
@@ -217,6 +220,17 @@ xxxx@xxxxxx-PC:/mnt/c/Users/xxxx/devops-with-docker/part1/Exercise1.8$ docker ru
 [GIN-debug] GET    /*path                    --> server.Start.func1 (3 handlers)
 [GIN-debug] Listening and serving HTTP on :8080
 ```
+
+### Exercise 1.9
+- Steps:
+    - `touch text.log` to create a file we can link to it.
+    - `docker run -v "$(pwd)/text.log:/usr/src/app/text.log" devopsdockeruh/simple-web-service` to start a container with a bind mount that points to the file we've just created.
+
+### Exercise 1.10
+
+- Command:
+    - `docker run -p 127.0.0.1:8080:8080 web-server`
+
 ## Summary / notes ..
 
 Commands | What | Short
@@ -249,5 +263,13 @@ COPY somefile.sh
 RUN touch something.txt
 CMD ./somefile.sh
 ```
-- `dockere build . -t <imagename>`:
+- `docker build . -t <imagename>`:
     - build an image based on the docker file
+
+- Docker File `ENTRYPOINT` instead of `CMD` if we want to pass an argument when we `docker run` an image. `CMD` can be used in addition to have a default argument. (Note that without bracket, command is executed as wrapped with `/bin/sh -c`)
+```
+FROM python:3.11
+ENTRYPOINT ["python3"]
+CMD ["--help"]
+```
+> In this example, we can run a command at the end (`docker build . -t pyt` then `docker run pyt --version`) to check the version. Without any command, it will output the help.
