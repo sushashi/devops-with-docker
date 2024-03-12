@@ -15,7 +15,7 @@ e073679ec0bb   nginx     "/docker-entrypoint.…"   27 seconds ago   Exited (0) 
 ### Exercise 1.2
 - output for `docker ps -a` and `docker image ls` after removing all images and containers:
 
-```bash
+```Shell
 xxxx@xxxxxx-PC:~$ docker stop 3066
 3066
 xxxx@xxxxxx-PC:~$ docker container prune
