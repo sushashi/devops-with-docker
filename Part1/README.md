@@ -3,7 +3,7 @@
 ## Exercises
 
 ### Exercise 1.1
-- output for `docker ps -a` after creating 3 containers running in detached mode and stopping two:
+- output for `docker ps -a` after creating 3 containers running in detached mode and stopping two: 
 ```
 xxxx@xxxxxx-PC:~$ docker ps -a
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                      PORTS     NAMES
@@ -105,7 +105,118 @@ Searching..
 </html>
 Input website:
 ```
+### Exercise 1.5
+- Commands used: 
+    - `docker pull devopsdockeruh/simple-web-service:ubuntu`
+    - `docker pull devopsdockeruh/simple-web-service:alpine`
+    - `docker image ls`
+        - we can see alpine is smaller
+    - `docker run -d devopsdockeruh/simple-web-service:alpine`
+    - `docker exec 3a tail -f ./text.log`
+        - Secret message is the same
 
+```
+xxxx@xxxxxx-PC:~$ docker pull devopsdockeruh/simple-web-service:ubuntu
+ubuntu: Pulling from devopsdockeruh/simple-web-service
+5d3b2c2d21bb: Pull complete
+3fc2062ea667: Pull complete
+75adf526d75b: Pull complete
+965d4bbb586a: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:d44e1dce398732e18c7c2bad9416a072f719af33498302b02929d4c112e88d2a
+Status: Downloaded newer image for devopsdockeruh/simple-web-service:ubuntu
+docker.io/devopsdockeruh/simple-web-service:ubuntu
+
+What's Next?
+  1. Sign in to your Docker account → docker login
+  2. View a summary of image vulnerabilities and recommendations → docker scout quickview devopsdockeruh/simple-web-service:ubuntu
+xxxx@xxxxxx-PC:~$ docker pull devopsdockeruh/simple-web-service:alpine
+alpine: Pulling from devopsdockeruh/simple-web-service
+ba3557a56b15: Pull complete
+1dace236434b: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:dd4d367476f86b7d7579d3379fe446ae5dfce25480903fb0966fc2e5257e0543
+Status: Downloaded newer image for devopsdockeruh/simple-web-service:alpine
+docker.io/devopsdockeruh/simple-web-service:alpine
+
+What's Next?
+  1. Sign in to your Docker account → docker login
+  2. View a summary of image vulnerabilities and recommendations → docker scout quickview devopsdockeruh/simple-web-service:alpine
+xxxx@xxxxxx-PC:~$ docker image ls
+REPOSITORY                          TAG       IMAGE ID       CREATED       SIZE
+devopsdockeruh/simple-web-service   ubuntu    4e3362e907d5   2 years ago   83MB
+devopsdockeruh/simple-web-service   alpine    fd312adc88e0   2 years ago   15.7MB
+xxxx@xxxxxx-PC:~$ docker run -d devopsdockeruh/simple-web-service:alpine
+3aeec821c9a5a1ea16e56b99e0ef71ba552e440fc27fd383ec7fbf0781834cfc
+xxxx@xxxxxx-PC:~$ docker exec 3a tail -f ./text.log
+2024-03-12 11:02:07 +0000 UTC
+2024-03-12 11:02:09 +0000 UTC
+2024-03-12 11:02:11 +0000 UTC
+2024-03-12 11:02:13 +0000 UTC
+2024-03-12 11:02:15 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2024-03-12 11:02:17 +0000 UTC
+2024-03-12 11:02:19 +0000 UTC
+```
+
+### Exercise 1.6
+- Steps: 
+    - Command used: `docker run -it devopsdockeruh/pull_exercise`
+    - Navigate to Docker Hub and find the docs.
+    - Submit the password: `basics`
+    - Get the secret message: `This is the secret message`
+```
+xxxx@xxxxxx-PC:~$ docker run -it devopsdockeruh/pull_exercise
+Unable to find image 'devopsdockeruh/pull_exercise:latest' locally
+latest: Pulling from devopsdockeruh/pull_exercise
+8e402f1a9c57: Pull complete
+5e2195587d10: Pull complete
+6f595b2fc66d: Pull complete
+165f32bf4e94: Pull complete
+67c4f504c224: Pull complete
+Digest: sha256:7c0635934049afb9ca0481fb6a58b16100f990a0d62c8665b9cfb5c9ada8a99f
+Status: Downloaded newer image for devopsdockeruh/pull_exercise:latest
+Give me the password: basics
+You found the correct password. Secret message is:
+"This is the secret message"
+```
+
+### Exercise 1.7
+- [Docker file](./Exercise1.7/Dockerfile) for curler
+
+### Exercise 1.8
+- Steps:
+    - Create [Docker file](./Exercise1.8/Dockerfile)
+    - Build the image with command: `docker build . -t web-server`
+    - Run the built image with command: `docker run web-server`
+    
+```
+xxxx@xxxxxx-PC:/mnt/c/Users/xxxx/devops-with-docker/part1/Exercise1.8$ docker build . -t web-server
+[+] Building 0.9s (5/5) FINISHED                                                                                                                    docker:default
+ => [internal] load build definition from Dockerfile                                                                                                          0.0s
+ => => transferring dockerfile: 94B                                                                                                                           0.0s 
+ => [internal] load metadata for docker.io/devopsdockeruh/simple-web-service:alpine                                                                           0.9s 
+ => [internal] load .dockerignore                                                                                                                             0.0s
+ => => transferring context: 2B                                                                                                                               0.0s 
+ => CACHED [1/1] FROM docker.io/devopsdockeruh/simple-web-service:alpine@sha256:dd4d367476f86b7d7579d3379fe446ae5dfce25480903fb0966fc2e5257e0543              0.0s 
+ => exporting to image                                                                                                                                        0.0s 
+ => => exporting layers                                                                                                                                       0.0s 
+ => => writing image sha256:978fbf315695ef5a3ec2e77ee411c4dcd9aa9b867fbc7ea3d26962545fda0585                                                                  0.0s 
+ => => naming to docker.io/library/web-server                                                                                                                 0.0s 
+
+What's Next?
+  1. Sign in to your Docker account → docker login
+  2. View a summary of image vulnerabilities and recommendations → docker scout quickview
+xxxx@xxxxxx-PC:/mnt/c/Users/xxxx/devops-with-docker/part1/Exercise1.8$ docker run web-server
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:   export GIN_MODE=release
+ - using code:  gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /*path                    --> server.Start.func1 (3 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+```
 ## Summary / notes ..
 
 Commands | What | Short
@@ -119,3 +230,24 @@ Commands | What | Short
 - `docker container attach <container>`:
     -  to attach your terminal's standard input, output and error to a running container.
     - `--no-stdin` option to not attachg STDIN
+
+- `docker diff <container>`
+    - Check files modifications in container
+
+- `docker cp <frompath> <container>:<topath>`
+    - copy a file to the container
+
+- `docker commit <container> <image new name>`
+    - create an image based on the container
+
+- Docker File Structure: 
+
+```
+FROM ubuntu:latest
+WORKDIR /usr/src/app
+COPY somefile.sh
+RUN touch something.txt
+CMD ./somefile.sh
+```
+- `dockere build . -t <imagename>`:
+    - build an image based on the docker file
