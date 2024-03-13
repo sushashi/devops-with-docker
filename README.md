@@ -4,3 +4,9 @@ This repository is used for the course [DevOps with Docker](https://devopswithdo
 ## Part 1
 - [Course material](https://devopswithdocker.com/category/part-1)
 - [Exercise submission](./Part1/)
+
+## Part 2
+- [Course material](https://devopswithdocker.com/category/part-2)
+- [Exercise submission](./Part2/)
+
+## Part 3
