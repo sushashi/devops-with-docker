@@ -1,10 +1,10 @@
-# Part 1: DevOps with Docker ([TKT21036](https://studies.helsinki.fi/courses/course-implementation/otm-4bd45ab8-8b23-4973-a918-a6b6f7bbb347)) 1 ECTS
+# [Part 1](https://devopswithdocker.com/category/part-1): DevOps with Docker ([TKT21036](https://studies.helsinki.fi/courses/course-implementation/otm-4bd45ab8-8b23-4973-a918-a6b6f7bbb347)) 1 ECTS
 
 ## Exercises
 
-### Exercise 1.1
+### Exercise 1.1: Getting Started
 - output for `docker ps -a` after creating 3 containers running in detached mode and stopping two: 
-```
+```console
 xxxx@xxxxxx-PC:~$ docker ps -a
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                      PORTS     NAMES
 80b8336d0f5f   nginx     "/docker-entrypoint.…"   5 seconds ago    Exited (0) 3 seconds ago              great_leavitt
@@ -12,10 +12,10 @@ e073679ec0bb   nginx     "/docker-entrypoint.…"   27 seconds ago   Exited (0) 
 3066be923656   nginx     "/docker-entrypoint.…"   54 seconds ago   Up 53 seconds               80/tcp    quizzical_tesla
 ```
 
-### Exercise 1.2
+### Exercise 1.2: Cleanup
 - output for `docker ps -a` and `docker image ls` after removing all images and containers:
 
-```ShellSession
+```console
 xxxx@xxxxxx-PC:~$ docker stop 3066
 3066
 xxxx@xxxxxx-PC:~$ docker container prune
@@ -45,7 +45,7 @@ REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 xxxx@xxxxxx-PC:~$
 ```
 
-### Exercise 1.3
+### Exercise 1.3: Secret Message
 
 - The secret message is: `You can find the source code here: https://github.com/docker-hy`
 - Commands given are:
@@ -53,7 +53,7 @@ xxxx@xxxxxx-PC:~$
     - `docker container ls`
     - `docker exec elegant_hoover tail -f ./text.log`
 
-```shell
+```console
 xxxx@xxxxxx-PC:~$ docker run -d devopsdockeruh/simple-web-service:ubuntu
 Unable to find image 'devopsdockeruh/simple-web-service:ubuntu' locally
 ubuntu: Pulling from devopsdockeruh/simple-web-service
@@ -80,7 +80,7 @@ Secret message is: 'You can find the source code here: https://github.com/docker
 2024-03-12 09:50:24 +0000 UTC
 ```
 
-### Exercise 1.4
+### Exercise 1.4: Missing Dependencies
 - Command used to start the process and install the dependencies:
     - `docker run -it -d --name curler ubuntu sh -c 'apt-get update; apt-get -y install curl; while true; do echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website; done'`
 - Once installed, attach to the container: 
@@ -108,7 +108,7 @@ Searching..
 </html>
 Input website:
 ```
-### Exercise 1.5
+### Exercise 1.5: Sizes of Images
 - Commands used: 
     - `docker pull devopsdockeruh/simple-web-service:ubuntu`
     - `docker pull devopsdockeruh/simple-web-service:alpine`
@@ -118,7 +118,7 @@ Input website:
     - `docker exec 3a tail -f ./text.log`
         - Secret message is the same
 
-```
+```console
 xxxx@xxxxxx-PC:~$ docker pull devopsdockeruh/simple-web-service:ubuntu
 ubuntu: Pulling from devopsdockeruh/simple-web-service
 5d3b2c2d21bb: Pull complete
@@ -162,13 +162,13 @@ Secret message is: 'You can find the source code here: https://github.com/docker
 2024-03-12 11:02:19 +0000 UTC
 ```
 
-### Exercise 1.6
+### Exercise 1.6: Hello Docker Hub
 - Steps: 
     - Command used: `docker run -it devopsdockeruh/pull_exercise`
     - Navigate to Docker Hub and find the docs.
     - Submit the password: `basics`
     - Get the secret message: `This is the secret message`
-```
+```console
 xxxx@xxxxxx-PC:~$ docker run -it devopsdockeruh/pull_exercise
 Unable to find image 'devopsdockeruh/pull_exercise:latest' locally
 latest: Pulling from devopsdockeruh/pull_exercise
@@ -184,16 +184,16 @@ You found the correct password. Secret message is:
 "This is the secret message"
 ```
 
-### Exercise 1.7
-- [Docker file](./Exercise1.7/Dockerfile) for curler
+### [Exercise 1.7: Image for Script](Exercise1.7/)
+- [Dockerfile](./Exercise1.7/Dockerfile) for curler
 
-### Exercise 1.8
+### [Exercise 1.8: Two Line Dockerfile](Exercise1.8/)
 - Steps:
-    - Create [Docker file](./Exercise1.8/Dockerfile)
+    - Create [Dockerfile](./Exercise1.8/Dockerfile)
     - Build the image with command: `docker build . -t web-server`
     - Run the built image with command: `docker run web-server`
     
-```
+```console
 xxxx@xxxxxx-PC:/mnt/c/Users/xxxx/devops-with-docker/part1/Exercise1.8$ docker build . -t web-server
 [+] Building 0.9s (5/5) FINISHED                                                                                                                    docker:default
  => [internal] load build definition from Dockerfile                                                                                                          0.0s
@@ -221,21 +221,65 @@ xxxx@xxxxxx-PC:/mnt/c/Users/xxxx/devops-with-docker/part1/Exercise1.8$ docker ru
 [GIN-debug] Listening and serving HTTP on :8080
 ```
 
-### Exercise 1.9
+### [Exercise 1.9: Volumes](Exercise1.9/)
 - Steps:
     - `touch text.log` to create a file we can link to it.
     - `docker run -v "$(pwd)/text.log:/usr/src/app/text.log" devopsdockeruh/simple-web-service` to start a container with a bind mount that points to the file we've just created.
 
-### Exercise 1.10
+### Exercise 1.10: Ports Open
 
 - Command:
     - `docker run -p 127.0.0.1:8080:8080 web-server`
 
+### [Exercise 1.11: Spring](Exercise1.11/)
+- Steps:
+    - [Dockerfile](./Exercise1.11/Dockerfile) for spring-example-project
+    - Build image: `docker build . -t spring-example`
+    - Run image: `docker run -p 3000:8080 spring-example`
+    - Check browser http://localhost:3000/
+
+### [Exercise 1.12: Hello, Frontend!](Exercise1.12/)
+- Steps:
+    - [Dockerfile](./Exercise1.12/Dockerfile) for example-frontend
+    - Build image: `docker build . -t example-frontend`
+    - Run image: `docker run -p 5000:5000 example-frontend`
+    - Check browser http://localhost:5000/
+
+### [Exercise 1.13: Hello, Backend!](Exercise1.13/)
+- Steps:
+    - [Dockerfile](Exercise1.13/Dockerfile) for example-backend
+    - Build image: `docker build . -t example-backend`
+    - Run image: `docker run -p 8080:8080 example-backend`
+    - Check browser http://localhost:8080/ping
+
+### Exercise 1.14 Environment:
+- Steps:
+    - Added required `ENV` variables to
+        - [Dockerfile](./Exercise1.12/Dockerfile) for example-frontend of ex 1.12
+        - [Dockerfile](Exercise1.13/Dockerfile) for example-backend of ex 1.13
+    - Rebuild and rerun images
+    - Check browser http://localhost:5000/, click button, see magic.
+
+### [Exercise 1.15: Homework](./Exercise1.15/)
+This is a dockerised version of an exercise from Full Stack Open part 1: Unicafe.
+- Docker Hub link: [Unicafe](https://hub.docker.com/r/a2742eb2a0e916c64554fd6144d8a7/unicafe)
+- Commands:
+    - `docker pull a2742eb2a0e916c64554fd6144d8a7/unicafe`
+    - `docker run -p 3000:3000 3c3a23603f56`
+    - Check browser http://localhost:3000/
+
+### Exercise 1.16: Cloud Deployment
+I deployed the dockerized Unicafe from the previous exercise on [render.com](https://render.com) 
+
+- Link to the app: https://unicafe-3ft2.onrender.com/
+    >It may take more than a minute to respond since I have a free plan on render
+- [Dockerfile](./Exercise1.15/Dockerfile)
+- Deployment on render.com is straightforward:
+    - Dashboard -> New + -> Webservice -> Deploy an existing image from registry -> Enter URL of docker hub link -> Next and Deploy
+
 ## Summary / notes ..
 
-Commands | What | Short
---- | --- | ---
-`docker image ls` | Lists images 
+
 
 - `docker run -it -d <image>`
     - `-it` to interract with the container.
