@@ -184,10 +184,10 @@ You found the correct password. Secret message is:
 "This is the secret message"
 ```
 
-## [Exercise 1.7: Image for Script](Exercise1.7/)
+## Exercise 1.7: Image for Script
 - [Dockerfile](./Exercise1.7/Dockerfile) for curler
 
-## [Exercise 1.8: Two Line Dockerfile](Exercise1.8/)
+## Exercise 1.8: Two Line Dockerfile
 - Steps:
     - Create [Dockerfile](./Exercise1.8/Dockerfile)
     - Build the image with command: `docker build . -t web-server`
@@ -221,7 +221,7 @@ xxxx@xxxxxx-PC:/mnt/c/Users/xxxx/devops-with-docker/part1/Exercise1.8$ docker ru
 [GIN-debug] Listening and serving HTTP on :8080
 ```
 
-## [Exercise 1.9: Volumes](Exercise1.9/)
+## Exercise 1.9: Volumes
 - Steps:
     - `touch text.log` to create a file we can link to it.
     - `docker run -v "$(pwd)/text.log:/usr/src/app/text.log" devopsdockeruh/simple-web-service` to start a container with a bind mount that points to the file we've just created.
@@ -231,21 +231,21 @@ xxxx@xxxxxx-PC:/mnt/c/Users/xxxx/devops-with-docker/part1/Exercise1.8$ docker ru
 - Command:
     - `docker run -p 127.0.0.1:8080:8080 web-server`
 
-## [Exercise 1.11: Spring](Exercise1.11/)
+## Exercise 1.11: Spring
 - Steps:
     - [Dockerfile](./Exercise1.11/Dockerfile) for spring-example-project
     - Build image: `docker build . -t spring-example`
     - Run image: `docker run -p 3000:8080 spring-example`
     - Check browser http://localhost:3000/
 
-## [Exercise 1.12: Hello, Frontend!](Exercise1.12/)
+## Exercise 1.12: Hello, Frontend!
 - Steps:
     - [Dockerfile](./Exercise1.12/Dockerfile) for example-frontend
     - Build image: `docker build . -t example-frontend`
     - Run image: `docker run -p 5000:5000 example-frontend`
     - Check browser http://localhost:5000/
 
-## [Exercise 1.13: Hello, Backend!](Exercise1.13/)
+## Exercise 1.13: Hello, Backend!
 - Steps:
     - [Dockerfile](Exercise1.13/Dockerfile) for example-backend
     - Build image: `docker build . -t example-backend`
@@ -255,12 +255,12 @@ xxxx@xxxxxx-PC:/mnt/c/Users/xxxx/devops-with-docker/part1/Exercise1.8$ docker ru
 ## Exercise 1.14 Environment:
 - Steps:
     - Added required `ENV` variables to
-        - [Dockerfile](./Exercise1.12/Dockerfile) for example-frontend of ex 1.12
-        - [Dockerfile](Exercise1.13/Dockerfile) for example-backend of ex 1.13
+        - [Dockerfile](./Exercise1.12/Dockerfile) from "example-frontend" of ex 1.12
+        - [Dockerfile](Exercise1.13/Dockerfile) from "example-backend" of ex 1.13
     - Rebuild and rerun images
     - Check browser http://localhost:5000/, click button, see magic.
 
-## [Exercise 1.15: Homework](./Exercise1.15/)
+## Exercise 1.15: Homework
 This is a dockerised version of an exercise from Full Stack Open part 1: Unicafe.
 - Docker Hub link: [Unicafe](https://hub.docker.com/r/a2742eb2a0e916c64554fd6144d8a7/unicafe)
 - Commands:
