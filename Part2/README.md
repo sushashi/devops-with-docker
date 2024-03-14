@@ -15,4 +15,15 @@
 - Run `docker compose up`
 - Check browser http://localhost:5000/
 
+## Exercise 2.4
+- [docker-compose](Exercise2.4/docker-compose.yml) file
+- Run `docker compose up`
+- Check browser http://localhost:5000/
+
+## Exercise 2.5
+- Command used: `docker compose up --scale compute=3`
+
+## Exercise 2.6
+- [docker-compose](Exercise2.6/docker-compose.yml) file
+
 ## Summary
