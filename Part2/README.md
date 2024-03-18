@@ -79,6 +79,12 @@
     111/tcp open     rpcbind
     ```
 ## Exercise 2.11
+I reused the [Unicafe](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-14) exercise from the Full Stack Open Part 1 course and set up a development environment using containers.
 
+Steps:
+- Modification of [package.json](Exercise2.11/unicafe/package.json) file by adding
+    - `"nodemon":"^3.1.0"` as dependency and
+    - `"dev": "nodemon -L index.js"` to be able to start nodemon.
+- [Dockerfile](Exercise2.11/Dockerfile) used.
+- [Docker compose](Exercise2.11/docker-compose.yml) filed used.
 
-## Summary
