@@ -7,15 +7,13 @@ services:
       - REDIS_HOST=redis
       - POSTGRES_HOST=db
       - POSTGRES_PASSWORD=example
-    ports:
-      - 8080:8080
+      - REQUEST_ORIGIN=*
+
     depends_on:
       - db
 
   frontend:
     build: ../../Part1/Exercise1.12
-    ports: 
-      - 5000:5000
 
   redis:
     image: redis
@@ -30,3 +28,13 @@ services:
       - type: bind
         source: ./database
         target: /var/lib/postgresql/data
+
+  nginx:
+    image: nginx
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: nginx.conf
+        target: /etc/nginx/nginx.conf
+    ports:
+      - 80:80

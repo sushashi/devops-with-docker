@@ -26,4 +26,59 @@
 ## Exercise 2.6
 - [docker-compose](Exercise2.6/docker-compose.yml) file
 
+## Exercise 2.7
+- [docker-compose](Exercise2.7/docker-compose.yml) file
+
+## Exercise 2.8
+- [docker-compose](Exercise2.8/docker-compose.yml) file
+- [nginx.conf](Exercise2.8/nginx.conf) file
+
+## Exercise 2.9
+- Changes:
+    - We can see that the first buttons of the frontend send a GET request using the port 8080.
+    - I naively added a redirection in port 8080 in Nginx to the backend.
+    - And published the port 8080
+- Files:
+    - [docker-compose](Exercise2.9/docker-compose.yml) file
+    - [nginx.conf](Exercise2.9/nginx.conf) file
+    - [Dockerfile](../Part1/Exercise1.12/Dockerfile) Frontend from Part 1
+    - [Dockerfile](../Part1/Exercise1.13/Dockerfile) Backend from Part 1
+
+## Exercise 2.10
+- From my naive implementation in exercise 2.9 I have exposed port 8080:
+    ```
+    Starting Nmap 7.92 ( https://nmap.org ) at 2024-03-18 08:01 UTC
+    Nmap scan report for localhost (127.0.0.1)
+    Host is up (0.0000050s latency).
+    Other addresses for localhost (not scanned): ::1
+    Not shown: 997 closed tcp ports (reset)
+    PORT     STATE    SERVICE
+    80/tcp   filtered http
+    111/tcp  open     rpcbind
+    8080/tcp filtered http-proxy
+    ```
+
+- Changes:
+    - Cancel port 8080 redirection and publication.
+    - Modify the `ENV` variable `REACT_APP_BACKEND_URL` to `http://localhost/api/` in the [Dockerfile](Exercise2.10/Dockerfile) file of the frontend.
+- Files:
+    - [docker-compose](Exercise2.10/docker-compose.yml) file.
+    - [Dockerfile](Exercise2.10/Dockerfile) frontend.
+    - [nginx.conf](Exercise2.10/nginx.conf) file.
+- Rerun `docker compose up`
+    - All buttons work.
+    - Ports 5000 and 8080 are no longer open.
+    ```
+    Starting Nmap 7.92 ( https://nmap.org ) at 2024-03-18 08:31 UTC
+    Nmap scan report for localhost (127.0.0.1)
+    Host is up (0.0000050s latency).
+    Other addresses for localhost (not scanned): ::1
+    Not shown: 998 closed tcp ports (reset)
+    PORT    STATE    SERVICE
+    80/tcp  filtered http
+    111/tcp open     rpcbind
+    ```
+## Exercise 2.11
+
+
 ## Summary
