@@ -1,10 +1,6 @@
-FROM ubuntu AS builder
-RUN apt-get update; apt-get -y install git;
-
 FROM docker
-WORKDIR /usr/src/app
-COPY --from=builder /bin /bin
-COPY --from=builder /boot /boot
+WORKDIR /usr/src/app/
 COPY builder.sh .
+RUN apk update; apk add git; apk add --no-cache bash
 
 ENTRYPOINT ["/usr/src/app/builder.sh"]

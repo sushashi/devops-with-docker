@@ -18,3 +18,17 @@
 - Runs as desribed in the exercise instructions.
 
 ## Exercise 3.4
+Files:
+- [Shell Script](Exercise3.4/builder.sh) file used
+- [Dockerfile](Exercise3.4/Dockerfile) file used
+
+Commands:
+- First build the image with `docker build -t builder .`
+
+- Then run as described in the exercise in a single line:
+    ```
+    docker run -e DOCKER_USER=username_here \
+        -e DOCKER_PWD=password_here \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        builder mluukkai/express_app username_here/testing
+    ```
