@@ -2,8 +2,19 @@
 
 ## Exercise 3.1
 
-- [Config](../.github/workflows/deploy-express-app.yaml) file of the deployment pipeline of the simple Express-App.
+- [Config](../.github/workflows/deploy-express-app.yaml) file for the deployment pipeline of the simple Express-App.
 - [Docker-compose](Exercise3.1/docker-compose.yml) file that pulls and run the Express-App and Watchtower from Docker Hub.
 
 ## Exercise 3.2
 
+- [Config](../.github/workflows/deploy-express-app.yaml) file for the deployment pipeline of the simple Express-App including deployment to Render.
+
+- [Link](https://express-app-hf9n.onrender.com/) to the deployed Express-App on Render (may take 1 min to start)
+
+## Exercise 3.3
+
+- [Shell Script](Exercise3.3/builder.sh) file
+
+- Runs as desribed in the exercise instructions.
+
+## Exercise 3.4
