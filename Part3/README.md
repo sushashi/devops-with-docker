@@ -2,3 +2,8 @@
 
 ## Exercise 3.1
 
+- [Config](../.github/workflows/deploy-express-app.yaml) file of the deployment pipeline of the simple Express-App.
+- [Docker-compose](Exercise3.1/docker-compose.yml) file that pulls and run the Express-App and Watchtower from Docker Hub.
+
+## Exercise 3.2
+
