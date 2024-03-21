@@ -13,14 +13,14 @@
 
 ## Exercise 3.3
 
-- [Shell Script](Exercise3.3/builder.sh) file
+- [Shell Script](Exercise3.3/builder.sh) file used.
 
-- Runs as desribed in the exercise instructions.
+- Run as desribed in the exercise instructions.
 
 ## Exercise 3.4
 Files:
-- [Shell Script](Exercise3.4/builder.sh) file used
-- [Dockerfile](Exercise3.4/Dockerfile) file used
+- [Shell Script](Exercise3.4/builder.sh) file used (Login added since it is manually managed in exercise 3.3).
+- [Dockerfile](Exercise3.4/Dockerfile) used.
 
 Commands:
 - First build the image with `docker build -t builder .`
@@ -32,3 +32,42 @@ Commands:
         -v /var/run/docker.sock:/var/run/docker.sock \
         builder mluukkai/express_app username_here/testing
     ```
+
+## Exercise 3.5
+
+- [Dockerfile](Exercise3.5/example-frontend/Dockerfile) used for the frontend.
+- [Dockerfile](Exercise3.5/example-backend/Dockerfile) used for the backend.
+
+## Exercise 3.6
+- I joined the RUN commands in the dockerfile of the frontend and backend. There was no difference in both at first (in Gigabyte) but I also removed `node_modules` which reduced a bit more in the frontend.
+
+    | Image | Before | After | Dockerfile |
+    |-------| -------| ------| -- |
+    | Frontend | 1.27 GB | 1.08 GB | [Dockerfile](Exercise3.6/example-frontend/Dockerfile) |
+    | Backend  | 1.06 GB | 1.06 GB | [Dockerfile](Exercise3.6/example-backend/Dockerfile) |
+
+## Exercise 3.7
+
+- Using an Alpine variants significantly reduced the size of the images:
+
+    | Image | Before | Ex 3.6 | With Alpine |  Dockerfile |
+    |-------| -------| ------| -- | -- |
+    | Frontend | 1.27 GB | 1.08 GB | 297 MB | [Dockerfile](Exercise3.6/example-frontend/Dockerfile) |
+    | Backend  | 1.06 GB | 1.06 GB | 479 MB | [Dockerfile](Exercise3.6/example-backend/Dockerfile) |
+
+## Exercise 3.8
+Using a multi-stage build we now have an image size of **82 MB**
+- [Dockerfile](Exercise3.8/example-frontend/Dockerfile) used.
+
+## Exercise 3.9
+Using a multi-stage build we now have an image size of **19 MB**
+- [Dockerfile](Exercise3.9/example-backend/Dockerfile) used
+
+## Exercise 3.10
+I use again the [Unicafe](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-14) exercise from the Full Stack Open Part 1. The docker image created in the [exercise 1.15](https://devopswithdocker.com/part-1/section-6#exercises-115-116) of the Part 1 was **1.23 GB**.
+
+- [Dockerfile](../Part1/Exercise1.15/Dockerfile) used in the exercise 1.15.
+
+Using a multi-stage build we now have an image size of **81.6 MB** !
+
+- [Dockerfile](Exercise3.10/Dockerfile) used for optimizing security and size.
