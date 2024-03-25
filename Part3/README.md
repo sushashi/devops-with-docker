@@ -43,7 +43,7 @@ Commands:
 - [Dockerfile](Exercise3.5/example-backend/Dockerfile) used for the backend.
 
 ## Exercise 3.6
-- I joined the RUN commands in the dockerfile of the frontend and backend. There was no difference in both at first (in GB) but I also removed `node_modules` which has slightly reduced the size of the frontend image.
+- I joined the RUN commands in the dockerfile of the frontend and backend. There was no real difference in both at first (in terms of GB) but I also removed `node_modules` which has slightly reduced the size of the frontend image.
 
     | Image | Before | After | Dockerfile |
     |-------| -------| ------| -- |
@@ -52,7 +52,7 @@ Commands:
 
 ## Exercise 3.7
 
-- Using an Alpine variants significantly reduced the size of the images:
+- Using Alpine variants significantly reduced the size of the images:
 
     | Image | Before | Ex 3.6 | With Alpine |  Dockerfile |
     |-------| -------| ------| -- | -- |
@@ -60,11 +60,11 @@ Commands:
     | Backend  | 1.06 GB | 1.06 GB | 479 MB | [Dockerfile](Exercise3.6/example-backend/Dockerfile) |
 
 ## Exercise 3.8
-Using a multi-stage build we now have an image size of **82 MB**
+Using a multi-stage build, we now have an image size of **82 MB**
 - [Dockerfile](Exercise3.8/example-frontend/Dockerfile) used.
 
 ## Exercise 3.9
-Using a multi-stage build we now have an image size of **19 MB**
+Using a multi-stage build, we now have an image size of **19 MB**
 - [Dockerfile](Exercise3.9/example-backend/Dockerfile) used
 
 ## Exercise 3.10
@@ -79,7 +79,7 @@ Using a multi-stage build we now have an image size of **81.6 MB** !
 ## Exercise 3.11
 Diagram created using [draw.io](draw.io) describing my novice understanding of Kubernetes:
 - Applications are executed in Containers in Pods.
-- Cluster is deployed in several worker machines (*worker Nodes*) orchestrated by a *Master Node* to ensure availability, redundancy, self-healing, scaling and where workloads are balanced.
+- Cluster is deployed in several worker machines (*worker Nodes*) orchestrated by a *Master Node* to ensure automatic deployment, availability, redundancy, self-healing and scaling. It also ensures that workloads are balanced.
 - [drawio](Exercise3.11/Ex311_Kubernetes.drawio) file used
 
 
