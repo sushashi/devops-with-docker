@@ -15,7 +15,11 @@
 
 - [Shell Script](Exercise3.3/builder.sh) file used.
 
-- Run as desribed in the exercise instructions.
+- Run as desribed in the exercise instructions (must be logged in on Docker Hub)
+    ```
+    ./builder.sh mluukkai/express_app usename_here/testing
+    ```
+
 
 ## Exercise 3.4
 Files:
@@ -39,7 +43,7 @@ Commands:
 - [Dockerfile](Exercise3.5/example-backend/Dockerfile) used for the backend.
 
 ## Exercise 3.6
-- I joined the RUN commands in the dockerfile of the frontend and backend. There was no difference in both at first (in Gigabyte) but I also removed `node_modules` which reduced a bit more in the frontend.
+- I joined the RUN commands in the dockerfile of the frontend and backend. There was no difference in both at first (in GB) but I also removed `node_modules` which has slightly reduced the size of the frontend image.
 
     | Image | Before | After | Dockerfile |
     |-------| -------| ------| -- |
@@ -71,3 +75,13 @@ I use again the [Unicafe](https://fullstackopen.com/en/part1/a_more_complex_stat
 Using a multi-stage build we now have an image size of **81.6 MB** !
 
 - [Dockerfile](Exercise3.10/Dockerfile) used for optimizing security and size.
+
+## Exercise 3.11
+Diagram created using [draw.io](draw.io) describing my novice understanding of Kubernetes:
+- Applications are executed in Containers in Pods.
+- Cluster is deployed in several worker machines (*worker Nodes*) orchestrated by a *Master Node* to ensure availability, redundancy, self-healing, scaling and where workloads are balanced.
+- [drawio](Exercise3.11/Ex311_Kubernetes.drawio) file used
+
+
+![image](Exercise3.11/Ex311_Kubernetes.jpg)
+
